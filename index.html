@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Scorpion Hack All In 1</title>
+  <title>SCORPION HOST</title>
   <style>
     /* ── tokens ─────────────────────────────────────────── */
     :root {
@@ -13,7 +13,7 @@
       --border:  #182030;
       --text:    #d6e4ff;
       --muted:   #8aa0c4;
-      --accent:  #00d4ec; /* Custom Scorpion Neon Cyan Accent */
+      --accent:  #00f0ff; /* Customized to match your Scorpion layout neon cyan */
       --ok:      #00d48c;
       --bad:     #ff3b52;
       color-scheme: dark;
@@ -24,10 +24,10 @@
     html, body { height: 100%; }
 
     body {
-      background: url('./logo.jpg') no-cache center center fixed;
-      background-size: cover;
+      background: var(--bg);
       color: var(--text);
       font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
       font-weight: 700;
       display: flex;
       justify-content: center;
@@ -37,121 +37,99 @@
     /* ── layout ──────────────────────────────────────────── */
     .wrap {
       width: 100%;
-      max-width: 800px;
+      max-width: 600px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      text-align: center;
+      gap: 18px;
     }
 
-    /* ── header layout ───────────────────────────────────── */
-    .scorp-hdr {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      width: 100%;
+    .console-row {
+      position: relative;
     }
 
-    .scorp-meta-row {
+    /* ── header ──────────────────────────────────────────── */
+    .hdr {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      width: 100%;
-      max-width: 650px;
-      color: var(--accent);
-      font-size: 14px;
-      letter-spacing: 0.1em;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hdr-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
     .psh-logo {
-      width: 110px;
-      height: 110px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 15px var(--accent);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
     }
 
-    .main-title {
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      color: #fff;
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      text-shadow: 0 0 10px var(--accent);
-    }
-
-    .sub-title {
-      font-size: 12px;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      margin-top: -5px;
-    }
-
-    /* ── menu layout buttons ────────────────────────────── */
-    .menu-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      width: 100%;
-      max-width: 500px;
-      margin-top: 10px;
-    }
-
-    .menu-row {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .scorp-btn {
-      flex: 1;
-      background: rgba(12, 16, 25, 0.75);
-      border: 2px solid var(--accent);
-      border-radius: 8px;
       color: #fff;
-      padding: 12px 10px;
-      font-size: 12px;
-      font-family: inherit;
+      line-height: 1.1;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .logo em { color: var(--accent); font-style: normal; }
+    .logo-ver {
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: inset 0 0 8px rgba(0, 212, 236, 0.2);
-      transition: all 0.2s ease;
+      color: var(--muted);
+      text-transform: none;
     }
 
-    .scorp-btn:hover {
-      background: var(--accent);
-      color: #000;
-      box-shadow: 0 0 15px var(--accent);
+    .logo-sub {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      margin-top: 3px;
     }
 
-    /* ── exploit stages ──────────────────────────────────── */
+    #fw-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── stages ──────────────────────────────────────────── */
     .stages {
       display: flex;
-      gap: 8px;
-      width: 100%;
-      max-width: 500px;
+      gap: 6px;
     }
 
     .stage {
       flex: 1;
-      background: rgba(12, 16, 25, 0.8);
       border: 1px solid var(--border);
       border-radius: 5px;
-      padding: 8px 4px;
+      padding: 8px 4px 7px;
       text-align: center;
+      transition: border-color 0.25s;
     }
 
     .stage-label {
       display: block;
       font-size: 9px;
-      letter-spacing: 0.12em;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 6px;
+      transition: color 0.25s;
     }
 
     .stage-dot {
@@ -160,9 +138,10 @@
       border-radius: 50%;
       background: var(--border);
       margin: 0 auto;
+      transition: background 0.25s, box-shadow 0.25s;
     }
 
-    /* internal runtime monitoring hooks */
+    /* active */
     .stage[data-s="active"] { border-color: var(--accent); }
     .stage[data-s="active"] .stage-label { color: var(--accent); }
     .stage[data-s="active"] .stage-dot {
@@ -170,9 +149,13 @@
       box-shadow: 0 0 8px var(--accent);
       animation: pulse 1.2s ease-in-out infinite;
     }
+
+    /* done */
     .stage[data-s="done"] { border-color: var(--ok); }
     .stage[data-s="done"] .stage-label { color: var(--ok); }
     .stage[data-s="done"] .stage-dot { background: var(--ok); }
+
+    /* error */
     .stage[data-s="error"] { border-color: var(--bad); }
     .stage[data-s="error"] .stage-label { color: var(--bad); }
     .stage[data-s="error"] .stage-dot { background: var(--bad); }
@@ -182,58 +165,114 @@
       50%       { opacity: 0.35; }
     }
 
-    /* ── invisible/hidden core dependencies ───────────────── */
-    .hidden-console-layer {
-      display: none !important;
+    @media (prefers-reduced-motion: reduce) {
+      .stage-dot { animation: none !important; }
     }
 
-    /* ── footer text design ───────────────────────────────── */
-    .credits-panel {
-      font-size: 11px;
-      color: #fff;
-      letter-spacing: 0.05em;
-      margin-top: 15px;
+    /* ── console ─────────────────────────────────────────── */
+    .console-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
     }
-    .credits-panel span { color: var(--accent); }
+
+    .console-bar, #console {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── patch panel ─────────────────────────────────────── */
+    .patch-panel {
+      position: absolute;
+      left: calc(100% + 16px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 180px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px 12px;
+    }
+
+    .patch-panel-hdr {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .patch-panel-body {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .console-bar {
+      background: var(--border);
+      padding: 5px 12px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .console-dots { display: flex; gap: 5px; }
+    .console-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      filter: brightness(1.8);
+    }
+
+    #console {
+      padding: 12px 14px; /* Extends log area smoothly across the screen width */
+      min-height: 430px;
+      max-height: 560px;
+      overflow-y: auto;
+      line-height: 1.95;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    #console .l-log,
+    #console .l-info,
+    #console .l-success,
+    #console .l-error   { color: #fff; }
+
+    /* ── footer ──────────────────────────────────────────── */
+    .credits {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+    }
+    .credits b { color: #9aafcc; font-weight: 700; }
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <!-- Top Scorpion Row Meta Header -->
-    <div class="scorp-hdr">
-      <div class="scorp-meta-row">
-        <span id="live-date">30/9/2026</span>
-        <span id="fw-label">Detecting firmware…</span>
+    <div class="hdr">
+      <div class="hdr-left">
+        <img src="./psh-logo.png" alt="Logo" class="psh-logo">
+        <div>
+          <div class="logo"><em>SCORPION</em>HOST <span class="logo-ver">v1.00</span></div>
+          <div class="logo-sub">PS5 Jailbreak · FW 7.00–13.60</div>
+        </div>
       </div>
-      
-      <!-- Center Branding Image Element -->
-      <img src="./psh-logo.png" alt="Scorpion Logo" class="psh-logo">
-      
-      <h1 class="main-title">WELCOME TO SCORPION HACK ALL IN 1</h1>
-      <p class="sub-title">Select an option below to begin</p>
+      <div id="fw-label">Detecting firmware…</div>
     </div>
 
-    <!-- Main Navigation Interface -->
-    <div class="menu-container">
-      <div class="menu-row">
-        <button class="scorp-btn">PS3 Device</button>
-        <button class="scorp-btn">PS4 Device</button>
-        <!-- Modified to actively trigger initialization -->
-        <button class="scorp-btn" id="ps5-trigger-btn" style="border-color: #fff;">PS5 Device</button>
-      </div>
-      
-      <div class="menu-row">
-        <button class="scorp-btn" style="width: 100%;">PS Tools</button>
-      </div>
-
-      <div class="menu-row" style="margin-top: 15px;">
-        <button class="scorp-btn">PS4 Themes</button>
-        <button class="scorp-btn">Pkg-Zone Site</button>
-      </div>
-    </div>
-
-    <!-- Exploit Stage Trackers Embedded Seamlessly -->
     <div class="stages">
       <div class="stage" id="stage-init">
         <span class="stage-label">Init</span>
@@ -253,38 +292,30 @@
       </div>
     </div>
 
-    <!-- Hidden Exploit Log Core Pipeline (Kept for function stability, hidden from UI) -->
-    <div class="hidden-console-layer">
-      <div id="console"></div>
-      <div class="patch-panel-body"></div>
+    <div class="console-row">
+      <div class="console-wrap">
+        <div class="console-bar">
+          <span>Output</span>
+          <div class="console-dots"><span></span><span></span><span></span></div>
+        </div>
+        <div id="console"></div>
+      </div>
+      <div class="patch-panel">
+        <div class="patch-panel-hdr">Patch Notes</div>
+        <div class="patch-panel-body"></div>
+      </div>
     </div>
 
-    <!-- Customized Footer Section -->
-    <div class="credits-panel">
-      <p style="color: var(--bad); margin-bottom: 5px;">Ahmed Essam</p>
-      <p>Designed and Compiled By <span>Ahmed Essam</span></p>
+    <div class="credits">
+      SCORPION HOST <b>//</b> PS5 host · FW 7.00–13.60 · Ahmed Essam
     </div>
 
   </div>
 
-  <!-- Background Core Exploit Architecture Script Injections -->
   <script src="./src/firmware.js"></script>
   <script src="./src/main.js"></script>
   <script src="./src/rop.js"></script>
   <script src="./src/utils/syscalls.js"></script>
   <script type="module" src="./src/site.js"></script>
-
-  <!-- Button Interceptor Script Hook -->
-  <script>
-    document.getElementById('ps5-trigger-btn').addEventListener('click', function() {
-      // Safely invokes the internal module jailbreak run command if loaded
-      if (window.main && typeof window.main.run === 'function') {
-         window.main.run();
-      } else {
-         // Fallback tracking hook for default script modules
-         console.log("Jailbreak process triggered via custom control panel button UI.");
-      }
-    });
-  </script>
 </body>
 </html>
