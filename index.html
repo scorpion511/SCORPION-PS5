@@ -13,7 +13,7 @@
       --border:  #182030;
       --text:    #d6e4ff;
       --muted:   #8aa0c4;
-      --accent:  #00f0ff; /* Customized to match your Scorpion layout neon cyan */
+      --accent:  #00f0ff; /* Customized to match Scorpion neon cyan */
       --ok:      #00d48c;
       --bad:     #ff3b52;
       color-scheme: dark;
@@ -61,21 +61,22 @@
       align-items: center;
       gap: 14px;
     }
+
     .psh-logo {
-    height: 105px;       
-    width: 105px;        
-    object-fit: cover;   
-    border-radius: 50%;  
-    border: 3px solid #00f0ff; 
-    filter: drop-shadow(0px 0px 12px #00f0ff); 
-    flex-shrink: 0;
-}
+      height: 105px;       
+      width: 105px;        
+      object-fit: cover;   
+      border-radius: 50%;  
+      border: 3px solid #00f0ff; 
+      filter: drop-shadow(0px 0px 12px #00f0ff); 
+      flex-shrink: 0;
+    }
+
     .logo {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
+      font-size: 13.5px; 
+      letter-spacing: 0.08em; 
       text-transform: uppercase;
-      color: #fff;
+      color: #00f0ff;
       line-height: 1.1;
       display: flex;
       align-items: baseline;
@@ -83,7 +84,7 @@
     }
     .logo em { color: var(--accent); font-style: normal; }
     .logo-ver {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.1em;
       color: var(--muted);
@@ -104,6 +105,39 @@
       color: var(--muted);
       letter-spacing: 0.1em;
     }
+    #fw-label.fw-ok { color: var(--ok); }
+    #fw-label.fw-bad { color: var(--bad); }
+
+    #fw-picker {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 6px;
+      padding: 12px;
+    }
+    #fw-picker-title {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    #fw-picker-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .fw-btn {
+      background: #101828;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 8px 10px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .fw-btn-on, .fw-btn:hover { border-color: var(--accent); color: #fff; }
 
     /* ── stages ──────────────────────────────────────────── */
     .stages {
@@ -182,35 +216,6 @@
       z-index: 1;
     }
 
-    /* ── patch panel ─────────────────────────────────────── */
-    .patch-panel {
-      position: absolute;
-      left: calc(100% + 16px);
-      top: 50%;
-      transform: translateY(-50%);
-      width: 180px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 10px 12px 12px;
-    }
-
-    .patch-panel-hdr {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .patch-panel-body {
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
     .console-bar {
       background: var(--border);
       padding: 5px 12px;
@@ -233,7 +238,7 @@
     }
 
     #console {
-      padding: 12px 14px; /* Extends log area smoothly across the screen width */
+      padding: 12px 14px; /* Log field adjusted for optimized screen width presentation */
       min-height: 430px;
       max-height: 560px;
       overflow-y: auto;
@@ -246,6 +251,28 @@
     #console .l-info,
     #console .l-success,
     #console .l-error   { color: #fff; }
+
+    /* Custom Patch Box Styling Built Directly Into Layout */
+    .custom-patch-notes {
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+    }
+    .custom-patch-notes strong {
+      display: block;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+    .custom-patch-notes div {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
 
     /* ── footer ──────────────────────────────────────────── */
     .credits {
@@ -264,11 +291,17 @@
     <div class="hdr">
       <div class="hdr-left">
         <img src="./psh-logo.png" alt="Logo" class="psh-logo">
-     <div class="logo" style="font-size: 13.5px; letter-spacing: 0.08em; color: #00f0ff;">
-    SCORPION HOST BY AHMED ESSAM <span class="logo-ver" style="color: var(--muted); font-size: 10px;">v1.00</span>
-</div>
+        <div>
+          <div class="logo">SCORPION HOST BY AHMED ESSAM <span class="logo-ver">v1.00</span></div>
+          <div class="logo-sub">PS5 Jailbreak · FW 7.00–13.60</div>
+        </div>
       </div>
       <div id="fw-label">Detecting firmware…</div>
+    </div>
+
+    <div id="fw-picker">
+      <div id="fw-picker-title">Internet Browser — pick your firmware</div>
+      <div id="fw-picker-list"></div>
     </div>
 
     <div class="stages">
@@ -298,17 +331,26 @@
         </div>
         <div id="console"></div>
       </div>
-      <div class="patch-panel">
-        <div class="patch-panel-hdr">Patch Notes</div>
-        <div class="patch-panel-body"></div>
+    </div>
+
+    <!-- Reorganized patch display panel entirely free of original owner's image/links -->
+    <div class="custom-patch-notes">
+      <strong>Patch Notes</strong>
+      <div>
+        30/09/2026<br><br>
+        - Replaced etaHEN with OnionHEN.<br><br>
+        - Added Payload Manager (pldmgr v0.5.2).<br><br>
+        - Added FTP Server In OnionHEN.
       </div>
     </div>
 
     <div class="credits">
-  SCORPION HOST <b>//</b> PS5 host · FW 7.00–13.60 · <span style="font-size: 16px; color: #fff; text-shadow: 0 0 8px var(--accent); display: inline-block; margin-left: 5px;">Welcome to SCORPION HACK ALL IN 1</span>
-</div>
-  </div>
+      SCORPION HOST <b>//</b> PS5 host · FW 7.00–13.60 · <span style="font-size: 16px; color: #fff; text-shadow: 0 0 8px var(--accent); display: inline-block; margin-left: 5px;">Welcome to SCORPION HACK ALL IN 1</span>
+    </div>
 
+  </div>
+  
+  <!-- Active Exploit Script Pipeline Assets -->
   <script src="./src/firmware.js"></script>
   <script src="./src/main.js"></script>
   <script src="./src/rop.js"></script>
